@@ -1,0 +1,12 @@
+<h1>Editar Pedido</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    
+    <div class="">
+    <input type="text" name="Product" value="{{ task.Product }}">
+    <input type="text" name="descripcion" value="{{ task.descripcion }}">
+    </div>
+    
+    <button type="submit">Guardar cambios</button>
+</form>

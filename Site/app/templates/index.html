@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="titulo"><h1>Uniqco System</h1></div>
+    <div class="bar" id="bar">
+        <a href="/ct">Crear Pedido</a>
+        <a href="">Sin Previo</a>
+        <a href="">En grabado</a>
+        <a href="">Por entregar</a>
+        <style>
+            .bar {
+                margin-top: 30px;
+                margin: 10px;
+                height: 150px;
+                display: flex;
+                gap: 200px;
+                align-items: center;
+                justify-content: center;
+            }
+
+            a:hover{
+                color: red;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+                font-size: 25px;
+            }
+            .titulo{
+                margin: 30px;
+            }
+        </style>
+    </div>
+
+
+
+
+    <div class="contenedor_tareas">
+        
+        {% for i in task %}
+
+        <div class="tarea">
+            <figure><img src="{% static 'image1.png' %}" alt=""></figure>
+            <div class="text">
+                <h1>{{ i.Product }}</h1>
+                <p class="descripcion">{{ i.descripcion }}</p>
+                <a href="{% url 'ver_' i.id %}" class="Detalles">Ver Detalles</a>
+            </div> 
+            <div class="estados">
+                <h3>{{ i.estado }}</h3>
+            </div>
+            <div class="bottons">
+                <a href="{% url 'ed' i.id %}">
+                    <button class="b1">Editar</button>
+                </a>
+                <form action="{% url 'delete' i.id %}" method="post">
+                    {% csrf_token %}
+                    <button class="b2">Eliminar</button>
+                </form>
+            </div>
+        </div>
+
+        {% endfor %}
+    </div>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .Detalles{
+            color: red;
+        }
+
+        .estados{
+            margin-left: 20px;
+        }
+
+
+        .tarea{
+            border: 5px solid black;
+            width: 400px;
+            height: 550px;
+            border-radius: 20px;
+            display: flex;
+            padding: 30;
+            flex-direction: column;
+            align-items:normal
+        }
+
+        .contenedor_tareas{
+            margin-top: 40px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 40px;
+            margin: 20px;
+            
+        }
+
+        figure {
+            height: 300px;
+            overflow: hidden;
+            margin: 10px;
+        }
+        
+        .text {
+            margin-left: 20px;
+            overflow: hidden;
+            margin: 20px;
+        }
+
+        .descripcion {
+            margin-top: 20px;
+            height: 20px;
+            overflow: hidden;
+        }
+
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .bottons{
+            display:flex;
+            gap: 40px;
+            margin-top: 20px;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+        button{
+            padding: 10px;
+            width: 100px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+        .b1{
+            background-color: green;
+            color: white;
+        }
+        .b2{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</body>
+</html>
