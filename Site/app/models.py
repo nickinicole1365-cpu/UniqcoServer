@@ -11,5 +11,3 @@ class Task(models.Model):
         ('Entregar','Para Entregar'),
     ]
     estado = models.CharField(max_length=20,choices = ESTADOS,default='Sin_previo')
-
-

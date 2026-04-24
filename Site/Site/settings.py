@@ -9,18 +9,16 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# ⚠️ SEGURIDAD
+
 SECRET_KEY = 'django-insecure-(ajs@i43z2uijq7)!z%0*x-ne$#(u6k%vvrb74sk9m-be^39&0'
 
-# En producción pon False
+
 DEBUG = True
 
 
-# 🔥 IMPORTANTE: agrega tu dominio de Render luego
 ALLOWED_HOSTS = ['*']
 
 
-# Aplicaciones
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -65,9 +63,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Site.wsgi.application'
 
 
-# =====================================================
-# 🔥 BASE DE DATOS (SUPABASE CORRECTO)
-# =====================================================
+
 
 DATABASES = {
     'default': dj_database_url.config(
@@ -78,7 +74,6 @@ DATABASES = {
 }
 
 
-# Password validation
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -95,7 +90,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internacionalización
+
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -105,12 +100,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Archivos estáticos
+
 STATIC_URL = 'static/'
 
 
-# =====================================================
-# 🔥 VARIABLE IMPORTANTE (Render / .env)
-# =====================================================
-# DATABASE_URL debe verse así:
-# postgresql://postgres:password@aws-0-xxx.pooler.supabase.com:6543/postgres
